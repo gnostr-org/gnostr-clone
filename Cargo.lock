@@ -1255,7 +1255,7 @@ checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
 
 [[package]]
 name = "gnostr-clone"
-version = "0.18.0"
+version = "0.0.1"
 dependencies = [
  "anyhow",
  "async-channel",

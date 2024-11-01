@@ -546,7 +546,7 @@ pub async fn send(args: SendArgs) -> anyhow::Result<()> {
     // use a flat store - todo: use a partial in mem store instead
     let suffix = rand::thread_rng().gen::<[u8; 16]>();
     let iroh_data_dir =
-        std::env::current_dir()?.join(format!(".sendme-send-{}", hex::encode(suffix)));
+        std::env::current_dir()?.join(format!(".gnostr-clone-send-{}", hex::encode(suffix)));
     if iroh_data_dir.exists() {
         println!("can not share twice from the same directory");
         std::process::exit(1);
@@ -588,7 +588,7 @@ pub async fn send(args: SendArgs) -> anyhow::Result<()> {
         }
     }
     println!("to get this data, use");
-    println!("sendme receive {}", ticket);
+    println!("gnostr-clone receive {}", ticket);
     let ps = SendStatus::new();
     let lp = LocalPool::single();
     let send_client = Arc::new(ps.new_client());
@@ -744,7 +744,7 @@ pub async fn receive(args: ReceiveArgs) -> anyhow::Result<()> {
         builder = builder.bind_addr_v6(addr);
     }
     let endpoint = builder.bind().await?;
-    let dir_name = format!(".sendme-get-{}", ticket.hash().to_hex());
+    let dir_name = format!(".gnostr-clone-{}", ticket.hash().to_hex());
     let iroh_data_dir = std::env::current_dir()?.join(dir_name);
     let db = iroh_blobs::store::fs::Store::load(&iroh_data_dir).await?;
     let mp = MultiProgress::new();

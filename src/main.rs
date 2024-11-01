@@ -1,10 +1,10 @@
-use gnostr_clone::*;
-use gnostr_clone::Commands;
-use console::style;
 use clap::error::ContextKind;
+use clap::error::ErrorKind;
 use clap::CommandFactory;
 use clap::Parser;
-use clap::error::ErrorKind;
+use console::style;
+use gnostr_clone::Commands;
+use gnostr_clone::*;
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt::init();
